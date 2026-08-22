@@ -1,0 +1,7 @@
+default_provider: generic
+providers:
+  generic:
+    model: example-model
+    api_key_env: NEWSPAPER_AGENT_MODEL_API_KEY
+    temperature: 0.2
+    max_tokens: 2048
