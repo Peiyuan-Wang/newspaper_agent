@@ -1,7 +1,40 @@
-default_provider: generic
+default_provider: deepseek
 providers:
-  generic:
-    model: example-model
-    api_key_env: NEWSPAPER_AGENT_MODEL_API_KEY
+  deepseek:
+    name: DeepSeek
+    protocol: openai-compatible
+    base_url: https://api.deepseek.com/v1
+    model: deepseek-chat
+    api_key_env: DEEPSEEK_API_KEY
     temperature: 0.2
     max_tokens: 2048
+    timeout: 60
+    max_attempts: 3
+    initial_retry_delay: 1.0
+    max_retry_delay: 8.0
+
+  openai:
+    name: OpenAI
+    protocol: openai-compatible
+    base_url: https://api.openai.com/v1
+    model: gpt-4o-mini
+    api_key_env: OPENAI_API_KEY
+    temperature: 0.2
+    max_tokens: 2048
+    timeout: 60
+    max_attempts: 3
+    initial_retry_delay: 1.0
+    max_retry_delay: 8.0
+
+  custom:
+    name: Custom OpenAI Compatible Provider
+    protocol: openai-compatible
+    base_url: https://example.com/v1
+    model: example-model
+    api_key_env: NEWSPAPER_AGENT_CUSTOM_API_KEY
+    temperature: 0.2
+    max_tokens: 2048
+    timeout: 60
+    max_attempts: 3
+    initial_retry_delay: 1.0
+    max_retry_delay: 8.0

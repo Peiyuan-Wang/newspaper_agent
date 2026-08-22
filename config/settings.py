@@ -10,18 +10,25 @@ import yaml
 @dataclass(frozen=True)
 class ProviderSettings:
     name: str
+    base_url: str
     model: str
-    api_key_env: str | None = None
+    api_key_env: str
     temperature: float = 0.2
     max_tokens: int = 2048
+    timeout: float = 60.0
+    max_attempts: int = 3
+    initial_retry_delay: float = 1.0
+    max_retry_delay: float = 8.0
 
 
-def load_provider_settings(path: Path) -> ProviderSettings:
-    """从 YAML 加载 provider 配置，不读取或保存真实密钥。"""
+def load_provider_settings(path: Path, provider_name: str | None = None) -> ProviderSettings:
+    """从 YAML 加载 provider 元数据，不读取或保存真实密钥。"""
     raw = yaml.safe_load(path.read_text(encoding="utf-8"))
-    provider_name = raw["default_provider"]
-    values = raw["providers"][provider_name]
-    return ProviderSettings(name=provider_name, **values)
+    selected_name = provider_name or raw["default_provider"]
+    values = dict(raw["providers"][selected_name])
+    values.pop("name", None)
+    values.pop("protocol", None)
+    return ProviderSettings(name=selected_name, **values)
 
 
 def database_url() -> str:
