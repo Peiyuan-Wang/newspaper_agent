@@ -1,4 +1,6 @@
 from pathlib import Path
 import sys
 
-sys.path.insert(0, str(Path(__file__).parents[2] / "src"))
+PROJECT_ROOT = Path(__file__).parents[1]
+sys.path.insert(0, str(PROJECT_ROOT))
+sys.path.insert(0, str(PROJECT_ROOT / "src"))
