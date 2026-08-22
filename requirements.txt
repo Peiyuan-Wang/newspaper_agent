@@ -1,0 +1,3 @@
+# newspaper_agent runtime and test dependencies
+PyYAML>=6.0,<7.0
+pytest>=8.0,<9.0

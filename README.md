@@ -4,9 +4,19 @@
 
 ## 快速开始
 
+本项目固定使用 Python 3.11，并建议使用 PyCharm 打开和维护仓库。
+
+在 PyCharm 中：
+
+1. 打开 `C:\\workspace\\newspaper_agent`。
+2. 将 Project Interpreter 设置为 `.venv` 中的 Python 3.11。
+3. 使用项目根目录的 `requirements.txt` 安装依赖。
+
+命令行等价操作：
+
 ```bash
-python -m venv .venv
-.venv\\Scripts\\pip install -e ".[dev]"
+python3.11 -m venv .venv
+.venv\\Scripts\\python -m pip install -r requirements.txt
 .venv\\Scripts\\python -m newspaper_agent
 .venv\\Scripts\\python -m pytest -q
 ```
