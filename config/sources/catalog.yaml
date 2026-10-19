@@ -1,0 +1,88 @@
+version: 1
+sources:
+  - id: fixture_academic
+    name: 学术离线样例
+    domains: [academic]
+    kinds: [paper]
+    regions: ['*']
+    languages: [zh, en]
+    adapter: fixture
+    status: enabled
+    homepage: https://example.invalid/academic
+    filters: [kind, region, language]
+    is_fixture: true
+  - id: fixture_academic_secondary
+    name: 学术补充离线样例
+    domains: [academic]
+    kinds: [paper]
+    regions: ['*']
+    languages: [zh, en]
+    adapter: fixture
+    status: enabled
+    homepage: https://example.invalid/academic-secondary
+    filters: [kind, region, language]
+    is_fixture: true
+  - id: fixture_medical
+    name: 医学离线样例
+    domains: [medical]
+    kinds: [paper, trial]
+    regions: ['*']
+    languages: [zh, en]
+    adapter: fixture
+    status: enabled
+    homepage: https://example.invalid/medical
+    filters: [kind, region, language]
+    is_fixture: true
+  - id: fixture_finance
+    name: 公司披露离线样例
+    domains: [finance]
+    kinds: [filing]
+    regions: [US, CN, HK]
+    languages: [zh, en]
+    adapter: fixture
+    status: enabled
+    homepage: https://example.invalid/finance
+    role: primary
+    filters: [kind, region, language]
+    is_fixture: true
+  - id: fixture_news
+    name: 新闻离线样例
+    domains: [news]
+    kinds: [news]
+    regions: ['*']
+    languages: [zh, en]
+    adapter: fixture
+    status: enabled
+    homepage: https://example.invalid/news
+    filters: [kind, region, language]
+    is_fixture: true
+  - id: fixture_general
+    name: 通用搜索离线样例
+    domains: [general]
+    kinds: [web, paper, trial, filing, news]
+    regions: ['*']
+    languages: [zh, en]
+    adapter: fixture
+    status: enabled
+    homepage: https://example.invalid/general
+    filters: [kind, region, language]
+    is_fixture: true
+  - id: arxiv
+    name: arXiv（待接入）
+    domains: [academic]
+    kinds: [paper]
+    regions: ['*']
+    languages: [en]
+    adapter: unimplemented
+    status: discovered
+    homepage: https://info.arxiv.org/help/api/index.html
+  - id: sec_edgar
+    name: SEC EDGAR（待接入）
+    domains: [finance]
+    kinds: [filing]
+    regions: [US]
+    languages: [en]
+    adapter: unimplemented
+    status: discovered
+    homepage: https://www.sec.gov/search-filings/edgar-application-programming-interfaces
+    role: primary

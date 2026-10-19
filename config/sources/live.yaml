@@ -1,0 +1,603 @@
+version: 1
+sources:
+  - id: ai_openai
+    name: OpenAI 官方动态
+    domains: [news, academic]
+    kinds: [news]
+    regions: ['*']
+    languages: [en]
+    adapter: rss
+    status: enabled
+    homepage: https://openai.com/news/rss.xml
+    role: primary
+    topics: [ai, agent, llm]
+    filters: [kind, language]
+  - id: ai_huggingface
+    name: Hugging Face 官方博客
+    domains: [news, academic]
+    kinds: [news]
+    regions: ['*']
+    languages: [en]
+    adapter: rss
+    status: enabled
+    homepage: https://huggingface.co/blog/feed.xml
+    role: primary
+    topics: [ai, agent, llm]
+    filters: [kind, language]
+  - id: ai_techcrunch
+    name: TechCrunch AI 新闻
+    domains: [news, academic]
+    kinds: [news]
+    regions: ['*']
+    languages: [en]
+    adapter: rss
+    status: enabled
+    homepage: https://techcrunch.com/category/artificial-intelligence/feed/
+    topics: [ai, agent, llm]
+    filters: [kind, language]
+  - id: arxiv
+    name: arXiv 论文元数据与摘要
+    domains: [academic]
+    kinds: [paper]
+    regions: ['*']
+    languages: [en]
+    adapter: arxiv
+    status: enabled
+    homepage: https://arxiv.org
+    role: primary
+    filters: [kind, language]
+  - id: pubmed
+    name: PubMed 生物医学文献
+    domains: [medical, academic]
+    kinds: [paper]
+    regions: ['*']
+    languages: [en]
+    adapter: pubmed
+    status: enabled
+    homepage: https://pubmed.ncbi.nlm.nih.gov
+    filters: [kind, language]
+  - id: crossref
+    name: Crossref 学术元数据与可用摘要
+    domains: [academic, medical]
+    kinds: [paper]
+    regions: ['*']
+    languages: ['*']
+    adapter: crossref
+    status: enabled
+    homepage: https://api.crossref.org
+    filters: [kind]
+  - id: fed_press
+    name: 美国联储官方新闻 RSS
+    domains: [finance]
+    kinds: [news]
+    regions: [US]
+    languages: [en]
+    adapter: rss
+    status: enabled
+    homepage: https://www.federalreserve.gov/feeds/press_all.xml
+    role: primary
+    filters: [kind, language, region]
+  - id: bbc_world
+    name: BBC 世界新闻 RSS
+    domains: [news, general]
+    kinds: [news]
+    regions: ['*']
+    languages: [en]
+    adapter: rss
+    status: enabled
+    homepage: https://feeds.bbci.co.uk/news/world/rss.xml
+    filters: [kind, language]
+  - id: tavily
+    name: Tavily 通用网页搜索（需要密钥）
+    domains: [general]
+    kinds: [web, news]
+    regions: ['*']
+    languages: ['*']
+    adapter: tavily
+    status: enabled
+    homepage: https://api.tavily.com
+    filters: [kind]
+  - id: mit_ai
+    name: MIT 人工智能研究动态
+    domains: [academic, news]
+    kinds: [news]
+    regions: ['*']
+    languages: [en]
+    adapter: rss
+    status: enabled
+    homepage: https://news.mit.edu/rss/topic/artificial-intelligence2
+    role: primary
+    topics: [ai, agent, llm]
+    filters: [kind, language]
+  - id: mit_physics
+    name: MIT 物理研究动态
+    domains: [academic]
+    kinds: [news]
+    regions: ['*']
+    languages: [en]
+    adapter: rss
+    status: enabled
+    homepage: https://news.mit.edu/rss/topic/physics
+    role: primary
+    filters: [kind, language]
+  - id: nature_physics
+    name: Nature Physics 最新出版
+    domains: [academic]
+    kinds: [paper]
+    regions: ['*']
+    languages: [en]
+    adapter: rss
+    status: enabled
+    homepage: https://www.nature.com/nphys.rss
+    role: primary
+    filters: [kind, language]
+  - id: nature_medicine
+    name: Nature Medicine 最新出版
+    domains: [medical, academic]
+    kinds: [paper]
+    regions: ['*']
+    languages: [en]
+    adapter: rss
+    status: enabled
+    homepage: https://www.nature.com/nm.rss
+    role: primary
+    filters: [kind, language]
+  - id: nih_nibib
+    name: NIH NIBIB 生物医学工程动态
+    domains: [medical]
+    kinds: [news]
+    regions: [US]
+    languages: [en]
+    adapter: rss
+    status: suspended
+    homepage: https://www.nibib.nih.gov/rss
+    role: primary
+    filters: [kind, language, region]
+  - id: ecb_press
+    name: 欧洲央行官方动态
+    domains: [finance]
+    kinds: [news]
+    regions: [EU]
+    languages: [en]
+    adapter: rss
+    status: suspended
+    homepage: https://www.ecb.europa.eu/rss/press.html
+    role: primary
+    filters: [kind, language, region]
+  - id: bbc_technology
+    name: BBC 科技新闻
+    domains: [general, news]
+    kinds: [news]
+    regions: ['*']
+    languages: [en]
+    adapter: rss
+    status: enabled
+    homepage: https://feeds.bbci.co.uk/news/technology/rss.xml
+    filters: [kind, language]
+  - id: bbc_science
+    name: BBC 科学与环境新闻
+    domains: [general, news]
+    kinds: [news]
+    regions: ['*']
+    languages: [en]
+    adapter: rss
+    status: enabled
+    homepage: https://feeds.bbci.co.uk/news/science_and_environment/rss.xml
+    filters: [kind, language]
+  - id: nasa_jpl
+    name: NASA JPL 科学与航天动态
+    domains: [academic, news]
+    kinds: [news]
+    regions: ['*']
+    languages: [en]
+    adapter: rss
+    status: suspended
+    homepage: https://www.jpl.nasa.gov/feeds/news/
+    role: primary
+    filters: [kind, language]
+  - id: ai_deepmind
+    name: Google DeepMind 官方博客
+    domains: [news, academic]
+    kinds: [news]
+    regions: ['*']
+    languages: [en]
+    adapter: rss
+    status: suspended
+    homepage: https://deepmind.google/blog/rss.xml
+    role: primary
+    topics: [ai, agent, llm]
+    filters: [kind, language]
+  - id: ai_google_research
+    name: Google Research 研究博客
+    domains: [news, academic]
+    kinds: [news]
+    regions: ['*']
+    languages: [en]
+    adapter: rss
+    status: enabled
+    homepage: https://research.google/blog/rss/
+    role: primary
+    topics: [ai, agent, llm]
+    filters: [kind, language]
+  - id: ai_microsoft_research
+    name: Microsoft Research 研究博客
+    domains: [news, academic]
+    kinds: [news]
+    regions: ['*']
+    languages: [en]
+    adapter: rss
+    status: enabled
+    homepage: https://www.microsoft.com/en-us/research/feed/
+    role: primary
+    topics: [ai, agent, llm]
+    filters: [kind, language]
+  - id: ai_nvidia
+    name: NVIDIA 官方博客
+    domains: [news, academic]
+    kinds: [news]
+    regions: ['*']
+    languages: [en]
+    adapter: rss
+    status: enabled
+    homepage: https://blogs.nvidia.com/feed/
+    role: primary
+    topics: [ai, agent, llm]
+    filters: [kind, language]
+  - id: ai_aws_ml
+    name: AWS 机器学习博客
+    domains: [news, academic]
+    kinds: [news]
+    regions: ['*']
+    languages: [en]
+    adapter: rss
+    status: enabled
+    homepage: https://aws.amazon.com/blogs/machine-learning/feed/
+    role: primary
+    topics: [ai, agent, llm]
+    filters: [kind, language]
+  - id: ai_github
+    name: GitHub AI 与机器学习博客
+    domains: [news, academic]
+    kinds: [news]
+    regions: ['*']
+    languages: [en]
+    adapter: rss
+    status: suspended
+    homepage: https://github.blog/ai-and-ml/feed/
+    role: primary
+    topics: [ai, agent, llm]
+    filters: [kind, language]
+  - id: ai_mistral
+    name: Mistral AI 官方动态
+    domains: [news, academic]
+    kinds: [news]
+    regions: ['*']
+    languages: [en]
+    adapter: rss
+    status: enabled
+    homepage: https://mistral.ai/news/rss
+    role: primary
+    topics: [ai, agent, llm]
+    filters: [kind, language]
+  - id: ai_bair
+    name: Berkeley AI Research 研究博客
+    domains: [news, academic]
+    kinds: [news]
+    regions: ['*']
+    languages: [en]
+    adapter: rss
+    status: enabled
+    homepage: https://bair.berkeley.edu/blog/feed.xml
+    role: primary
+    topics: [ai, agent, llm]
+    filters: [kind, language]
+  - id: ai_verge
+    name: The Verge AI 新闻
+    domains: [news, academic]
+    kinds: [news]
+    regions: ['*']
+    languages: [en]
+    adapter: rss
+    status: enabled
+    homepage: https://www.theverge.com/rss/ai-artificial-intelligence/index.xml
+    topics: [ai, agent, llm]
+    filters: [kind, language]
+  - id: ai_ars
+    name: Ars Technica AI 新闻
+    domains: [news, academic]
+    kinds: [news]
+    regions: ['*']
+    languages: [en]
+    adapter: rss
+    status: enabled
+    homepage: https://arstechnica.com/ai/feed/
+    topics: [ai, agent, llm]
+    filters: [kind, language]
+  - id: ai_mit_review
+    name: MIT Technology Review AI 新闻
+    domains: [news, academic]
+    kinds: [news]
+    regions: ['*']
+    languages: [en]
+    adapter: rss
+    status: enabled
+    homepage: https://www.technologyreview.com/topic/artificial-intelligence/feed
+    topics: [ai, agent, llm]
+    filters: [kind, language]
+  - id: ai_decoder
+    name: The Decoder AI 新闻
+    domains: [news, academic]
+    kinds: [news]
+    regions: ['*']
+    languages: [en]
+    adapter: rss
+    status: enabled
+    homepage: https://the-decoder.com/feed/
+    topics: [ai, agent, llm]
+    filters: [kind, language]
+  - id: ai_simon
+    name: Simon Willison 技术观察
+    domains: [news, academic]
+    kinds: [news]
+    regions: ['*']
+    languages: [en]
+    adapter: rss
+    status: enabled
+    homepage: https://simonwillison.net/atom/everything/
+    topics: [ai, agent, llm]
+    filters: [kind, language]
+  - id: ai_import
+    name: Import AI 研究周刊
+    domains: [news, academic]
+    kinds: [news]
+    regions: ['*']
+    languages: [en]
+    adapter: rss
+    status: enabled
+    homepage: https://importai.substack.com/feed
+    topics: [ai, agent, llm]
+    filters: [kind, language]
+  - id: ai_latent
+    name: Latent Space 技术访谈
+    domains: [news, academic]
+    kinds: [news]
+    regions: ['*']
+    languages: [en]
+    adapter: rss
+    status: enabled
+    homepage: https://www.latent.space/feed
+    topics: [ai, agent, llm]
+    filters: [kind, language]
+  - id: hn_community
+    name: Hacker News 技术社区
+    domains: [general, news]
+    kinds: [news]
+    regions: ['*']
+    languages: [en]
+    adapter: rss
+    status: enabled
+    homepage: https://news.ycombinator.com/rss
+    filters: [kind, language]
+  - id: hf_forum
+    name: Hugging Face 技术论坛
+    domains: [academic, news]
+    kinds: [news]
+    regions: ['*']
+    languages: [en]
+    adapter: rss
+    status: enabled
+    homepage: https://discuss.huggingface.co/latest.rss
+    topics: [ai, agent, llm]
+    filters: [kind, language]
+  - id: nist_news
+    name: NIST 官方科研与标准动态
+    domains: [general, academic, news]
+    kinds: [news]
+    regions: ['*']
+    languages: [en]
+    adapter: rss
+    status: enabled
+    homepage: https://www.nist.gov/news-events/news/rss.xml
+    role: primary
+    filters: [kind, language]
+  - id: quanta_science
+    name: Quanta 数学与物理报道
+    domains: [academic, news]
+    kinds: [news]
+    regions: ['*']
+    languages: [en]
+    adapter: rss
+    status: enabled
+    homepage: https://www.quantamagazine.org/feed/
+    topics: [physics, math]
+    filters: [kind, language]
+  - id: aps_physics
+    name: APS Physics 研究解读
+    domains: [academic]
+    kinds: [news]
+    regions: ['*']
+    languages: [en]
+    adapter: rss
+    status: suspended
+    homepage: https://physics.aps.org/rss
+    role: primary
+    topics: [physics]
+    filters: [kind, language]
+  - id: aps_prl
+    name: Physical Review Letters 最新论文
+    domains: [academic]
+    kinds: [paper]
+    regions: ['*']
+    languages: [en]
+    adapter: rss
+    status: suspended
+    homepage: https://journals.aps.org/rss/recent/prl.xml
+    role: primary
+    topics: [physics]
+    filters: [kind, language]
+  - id: arxiv_condmat_feed
+    name: arXiv 凝聚态每日更新
+    domains: [academic]
+    kinds: [paper]
+    regions: ['*']
+    languages: [en]
+    adapter: rss
+    status: enabled
+    homepage: https://rss.arxiv.org/rss/cond-mat
+    role: primary
+    topics: [physics]
+    filters: [kind, language]
+  - id: arxiv_ai_feed
+    name: arXiv 人工智能每日更新
+    domains: [academic, news]
+    kinds: [paper]
+    regions: ['*']
+    languages: [en]
+    adapter: rss
+    status: enabled
+    homepage: https://rss.arxiv.org/rss/cs.AI
+    role: primary
+    topics: [ai, agent]
+    filters: [kind, language]
+  - id: arxiv_ml_feed
+    name: arXiv 机器学习每日更新
+    domains: [academic, news]
+    kinds: [paper]
+    regions: ['*']
+    languages: [en]
+    adapter: rss
+    status: enabled
+    homepage: https://rss.arxiv.org/rss/cs.LG
+    role: primary
+    topics: [ai, llm]
+    filters: [kind, language]
+  - id: arxiv_cl_feed
+    name: arXiv 计算语言每日更新
+    domains: [academic, news]
+    kinds: [paper]
+    regions: ['*']
+    languages: [en]
+    adapter: rss
+    status: enabled
+    homepage: https://rss.arxiv.org/rss/cs.CL
+    role: primary
+    topics: [ai, llm]
+    filters: [kind, language]
+  - id: arxiv_math_feed
+    name: arXiv 表示论每日更新
+    domains: [academic]
+    kinds: [paper]
+    regions: ['*']
+    languages: [en]
+    adapter: rss
+    status: enabled
+    homepage: https://rss.arxiv.org/rss/math.RT
+    role: primary
+    topics: [math, physics]
+    filters: [kind, language]
+  - id: physorg_physics
+    name: Phys.org 物理新闻
+    domains: [academic, news]
+    kinds: [news]
+    regions: ['*']
+    languages: [en]
+    adapter: rss
+    status: enabled
+    homepage: https://phys.org/rss-feed/physics-news/
+    topics: [physics]
+    filters: [kind, language]
+  - id: sciencedaily_physics
+    name: ScienceDaily 物理动态
+    domains: [academic, news]
+    kinds: [news]
+    regions: ['*']
+    languages: [en]
+    adapter: rss
+    status: enabled
+    homepage: https://www.sciencedaily.com/rss/matter_energy/physics.xml
+    topics: [physics]
+    filters: [kind, language]
+  - id: sspai_news
+    name: 少数派 科技与应用
+    domains: [general, news]
+    kinds: [news]
+    regions: ['*']
+    languages: [zh]
+    adapter: rss
+    status: enabled
+    homepage: https://sspai.com/feed
+    filters: [kind, language]
+  - id: ithome_news
+    name: IT之家 科技新闻
+    domains: [general, news]
+    kinds: [news]
+    regions: ['*']
+    languages: [zh]
+    adapter: rss
+    status: enabled
+    homepage: https://www.ithome.com/rss/
+    filters: [kind, language]
+  - id: solidot_news
+    name: Solidot 开源与科技
+    domains: [general, news]
+    kinds: [news]
+    regions: ['*']
+    languages: [zh]
+    adapter: rss
+    status: enabled
+    homepage: https://www.solidot.org/index.rss
+    filters: [kind, language]
+  - id: kr36_news
+    name: 36氪 科技与商业
+    domains: [news, finance]
+    kinds: [news]
+    regions: ['*']
+    languages: [zh]
+    adapter: rss
+    status: suspended
+    homepage: https://36kr.com/feed
+    filters: [kind, language]
+  - id: infoq_news
+    name: InfoQ 软件工程动态
+    domains: [academic, news]
+    kinds: [news]
+    regions: ['*']
+    languages: [en]
+    adapter: rss
+    status: suspended
+    homepage: https://www.infoq.com/feed/
+    topics: [ai, agent]
+    filters: [kind, language]
+  - id: nasa_news
+    name: NASA 官方科学动态
+    domains: [academic, news]
+    kinds: [news]
+    regions: ['*']
+    languages: [en]
+    adapter: rss
+    status: enabled
+    homepage: https://www.nasa.gov/feed/
+    role: primary
+    filters: [kind, language]
+  - id: who_news
+    name: WHO 官方新闻
+    domains: [medical, news]
+    kinds: [news]
+    regions: ['*']
+    languages: [en]
+    adapter: rss
+    status: suspended
+    homepage: https://www.who.int/rss-feeds/news-english.xml
+    role: primary
+    filters: [kind, language]
+  - id: ieee_ai
+    name: IEEE Spectrum AI 技术报道
+    domains: [academic, news]
+    kinds: [news]
+    regions: ['*']
+    languages: [en]
+    adapter: rss
+    status: enabled
+    homepage: https://spectrum.ieee.org/feeds/topic/artificial-intelligence.rss
+    topics: [ai, agent, llm]
+    filters: [kind, language]

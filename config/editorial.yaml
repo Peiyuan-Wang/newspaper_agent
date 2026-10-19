@@ -1,0 +1,20 @@
+version: 1
+# 分类、排序与阅读版式；不把这些透明规则的分数当事实可信度。
+default_recent_days: 30
+categories:
+  - id: models
+    label: 模型发布与更新
+    terms: [model, gpt, claude, gemini, 模型, 权重]
+  - id: products
+    label: 产品与智能体
+    terms: [agent, agentic, product, tool, api, 智能体, 产品, 工具]
+  - id: industry
+    label: 行业与政策
+    terms: [funding, acquisition, policy, regulation, 融资, 并购, 政策, 监管]
+  - id: research
+    label: 论文与研究
+    terms: [paper, benchmark, study, research, 论文, 研究, 评测]
+  - id: practice
+    label: 方法与实践
+    terms: [tutorial, guide, how to, 教程, 实践, 方法]
+default_category: industry

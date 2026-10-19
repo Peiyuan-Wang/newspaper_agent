@@ -1,0 +1,7 @@
+# 搜索配置独立于 model_config.yaml；没有密钥或显式 --search live 不会联网。
+provider: tavily
+api_key_env: TAVILY_API_KEY
+timeout: 20
+max_attempts: 1
+# 每次搜索最多返回此数量（1到5），模型请求更多也会被限制。
+max_results: 3

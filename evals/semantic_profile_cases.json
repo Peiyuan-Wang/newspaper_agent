@@ -1,0 +1,14 @@
+{
+  "description": "虚构的控制案例，仅用于本地语义匹配和反馈方向验证，不是真实新闻或质量基准。",
+  "interests": [
+    {"topic": "群论中的投影表示", "category": "凝聚态理论"},
+    {"topic": "群的射影表示理论", "category": "凝聚态理论"},
+    {"topic": "大语言模型的强化学习与推理", "category": "AI算法"}
+  ],
+  "articles": [
+    {"id": "math", "title": "Projective representations in spin space group classification", "snippet": "The theoretical study uses group cohomology and projective representations to classify spin space groups and their reciprocal-space symmetries.", "expected_category": "凝聚态理论"},
+    {"id": "materials", "title": "Projective symmetry explains band degeneracies in magnetic materials", "snippet": "Electronic band calculations for candidate magnetic materials use projective representations of spin space groups to explain observed degeneracies.", "expected_category": "凝聚态理论"},
+    {"id": "llm", "title": "Reinforcement learning improves reasoning in large language models", "snippet": "A controlled study evaluates reinforcement learning for mathematical reasoning in large language models with verifiable rewards.", "expected_category": "AI算法"},
+    {"id": "cooking", "title": "A guide to baking bread at home", "snippet": "The recipe compares flour, yeast and oven temperatures for home baking.", "expected_category": null}
+  ]
+}

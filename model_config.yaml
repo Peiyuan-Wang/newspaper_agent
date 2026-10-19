@@ -1,8 +1,11 @@
 default_provider: deepseek
+# wire_api: chat -> /chat/completions；responses -> /responses。
+# temperature / max_tokens 填 null 表示不发送；注释掉则使用默认值。
 providers:
   deepseek:
     name: DeepSeek
     protocol: openai-compatible
+    wire_api: chat
     base_url: https://api.deepseek.com/v1
     model: deepseek-chat
     api_key_env: DEEPSEEK_API_KEY
@@ -16,6 +19,7 @@ providers:
   openai:
     name: OpenAI
     protocol: openai-compatible
+    wire_api: chat
     base_url: https://api.openai.com/v1
     model: gpt-4o-mini
     api_key_env: OPENAI_API_KEY
@@ -26,14 +30,29 @@ providers:
     initial_retry_delay: 1.0
     max_retry_delay: 8.0
 
-  custom:
+  custom_astra:
     name: Custom OpenAI Compatible Provider
     protocol: openai-compatible
-    base_url: https://example.com/v1
-    model: example-model
+    wire_api: responses
+    base_url: https://api.huanling.icu/v1
+    model: gpt-6-astra
     api_key_env: NEWSPAPER_AGENT_CUSTOM_API_KEY
     temperature: 0.2
     max_tokens: 2048
+    timeout: 60
+    max_attempts: 3
+    initial_retry_delay: 1.0
+    max_retry_delay: 8.0
+
+  custom_6sol:
+    name: Custom OpenAI Compatible Provider
+    protocol: openai-compatible
+    wire_api: responses
+    base_url: https://api.huanling.icu/v1
+    model: gpt-6-sol
+    api_key_env: NEWSPAPER_AGENT_CUSTOM_API_KEY
+    temperature: null
+    max_tokens: null
     timeout: 60
     max_attempts: 3
     initial_retry_delay: 1.0

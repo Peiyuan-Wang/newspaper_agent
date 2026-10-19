@@ -128,3 +128,13 @@ def test_invalid_response_is_rejected():
 
     with pytest.raises(ModelCommunicationError, match="响应格式无效"):
         make_client(handler).complete([])
+
+
+@pytest.mark.parametrize("message", [
+    {"role": "assistant", "content": None},
+    {"role": "user", "content": "wrong role"},
+    {"role": "assistant", "content": ["not text"]},
+])
+def test_non_text_or_non_assistant_response_is_rejected(message):
+    with pytest.raises(ModelCommunicationError, match="响应格式无效"):
+        make_client(lambda _: httpx.Response(200, json={"choices": [{"message": message}]})).complete([])
